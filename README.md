@@ -15,6 +15,7 @@ This project is an agriculture chatbot designed to assist farmers with their que
 - Python 3.7+
 - Pip (Python package installer)
 - Git (for cloning the repository)
+- PyTorch
 
 ### Installation
 
@@ -24,20 +25,13 @@ This project is an agriculture chatbot designed to assist farmers with their que
     git clone https://github.com/FaisalAhmedBijoy/Chat-Bot-using-LLM-with-Gradio
     ```
 
-2. **Create and activate a virtual environment:**
-
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. **Install the dependencies:**
+2. **Install the dependencies:**
 
     ```sh
     pip install -r requirements.txt
     ```
 
-4. **Download the model:**
+3. **Download the model:**
 
     Download the model `Qwen/Qwen2-7B-Instruct` from Hugging Face and place it in a directory, for example, `models`.
 
@@ -90,7 +84,7 @@ agri-chatbot/
 
 ## Acknowledgments
 
-- The chatbot uses the Qwen2-7B-Instruct model from Hugging Face.
+- The chatbot uses the [Qwen2-7B-Instruct]([text](https://huggingface.co/Qwen/Qwen2-7B-Instruct)) model from Hugging Face.
 - Flask is used for the web framework.
 - Bootstrap is used for styling the web interface.
 
