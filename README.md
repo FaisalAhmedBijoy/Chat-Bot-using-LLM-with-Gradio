@@ -1,4 +1,4 @@
-# Agri Chatbot
+# Agri Chatbot: Chat-Bot-using-LLM-with-Gradio
 
 This project is an agriculture chatbot designed to assist farmers with their queries using a large language model. The chatbot is built with Flask for the backend and uses a pre-trained model from Hugging Face for generating responses.
 
