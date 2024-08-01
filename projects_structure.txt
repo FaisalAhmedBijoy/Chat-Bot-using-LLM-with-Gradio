@@ -1,0 +1,16 @@
+.
+├── app.py
+├── download_model.py
+├── llm_chat_hf_template_model.py
+├── projects_structure.txt
+├── README.md
+├── requirements.txt
+├── static
+│   ├── audio
+│   └── images
+├── templates
+│   └── index.html
+└── uploads
+    └── audio.webm
+
+5 directories, 8 files

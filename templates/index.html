@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agri Chatbot</title>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is an Agriculture chatbot that helps farmers to make the right decisions." />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            padding-top: 50px;
+            background-color: #f8f9fa;
+        }
+        .chat-container {
+            height: 600px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .chat-message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .chat-message.user {
+            background-color: #d9edf7;
+            text-align: right;
+        }
+        .chat-message.bot {
+            background-color: #dff0d8;
+            text-align: left;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #send-btn {
+            margin-top: 0; /* Adjusted margin */
+        }
+        .loading {
+            font-style: italic;
+            color: #999;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+        }
+        .input-group > input {
+            flex: 1;
+        }
+        .input-group > button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Agri Chatbot: কৃষি বন্ধু </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2 class="text-center"> কৃষি বন্ধু : এ আই (AI) মডেল এর মাধ্যমে কৃষি পরামর্শ </h2>
+        <p class="text-center">এ আই (AI) মডেল এর উত্তর এর জন্য কিছুক্ষণ অপেক্ষা করুন </p>
+        <div class="chat-container" id="chat-container"></div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="user-input" placeholder="Type your message...">
+                    <button type="button" class="btn btn-primary" id="send-btn"><i class="bi bi-send-fill"></i> Send</button>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <h2>Made by <i> Faisal Ahmed </i> and <i> H.M.Mehedi Hasan (Badhon) </i>
+                <a href="https://www.linkedin.com/in/mohammed97ashraf" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/mohammed97ashraf" target="_blank"><i class="bi bi-github"></i></a>
+            </h2>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#send-btn').on('click', function() {
+                sendMessage();
+            });
+
+            $('#user-input').on('keypress', function(e) {
+                if (e.which === 13) {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                var userInput = $('#user-input').val();
+                if (userInput.trim() !== '') {
+                    $('#user-input').val('');
+                    $('#chat-container').append('<div class="chat-message user alert alert-info"><span class="emoji"> 👨‍🌾 </span><span>' + userInput + '</span></div>');
+                    scrollToBottom();
+
+                    $('#chat-container').append('<div class="chat-message bot alert alert-success loading"><span class="emoji"> 🤖 </span><span>Bot is typing...</span></div>');
+                    scrollToBottom();
+
+                    $.post('/chat', {text: userInput}, function(response) {
+                        $('#chat-container .loading').remove();
+                        $('#chat-container').append('<div class="chat-message bot alert alert-success"><span class="emoji"> 🤖 </span><span>' + response.text + '</span></div>');
+                        $('#chat-container').append('<div class="chat-message bot alert alert-success"><audio controls src="' + response.voice + '"></audio></div>');
+                        scrollToBottom();
+                    });
+                }
+            }
+
+            function scrollToBottom() {
+                $('#chat-container').scrollTop($('#chat-container')[0].scrollHeight);
+            }
+        });
+    </script>
+</body>
+</html>
