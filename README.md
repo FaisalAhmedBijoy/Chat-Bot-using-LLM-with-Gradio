@@ -21,8 +21,7 @@ This project is an agriculture chatbot designed to assist farmers with their que
 1. **Clone the repository:**
 
     ```sh
-    git clone https://github.com/faisalahmedbijoy/agri-chatbot.git
-    cd agri-chatbot
+    git clone https://github.com/FaisalAhmedBijoy/Chat-Bot-using-LLM-with-Gradio
     ```
 
 2. **Create and activate a virtual environment:**
@@ -97,9 +96,7 @@ agri-chatbot/
 
 ## Contributors
 
-- Faisal Ahmed
-- H.M.Mehedi Hasan (Badhon)
+- [Faisal Ahmed](https://www.linkedin.com/in/faisal-ahmed-2a71581b1/)
+- [H.M.Mehedi Hasan (Badhon)](https://www.linkedin.com/in/h-m-mehedi-hasan-badhon/) 
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
